@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 friends = Friend.create([
-  {name: "Nemwel Boniface", phone: 754135545, twitter: "@nemwel_bonie", email: "nemwelboniface@outlook.com", location: "Nairobi, Kenya"}
+  {name: "Nemwel Boniface", phone: 754135545, email: "nemwelboniface@outlook.com", location: "Nairobi, Kenya"}
 ])
