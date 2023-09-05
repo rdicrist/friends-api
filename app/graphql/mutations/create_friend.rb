@@ -4,7 +4,6 @@ class Mutations::CreateFriend < Mutations::BaseMutation
     argument :email, String, required: true
     argument :phone, String, required: true
 
-    # type Types::FriendType null: false
     field :friend, Types::FriendType, null: false
     field :errors, [String]
 

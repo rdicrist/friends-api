@@ -14,5 +14,19 @@ module Types
       Friend.find(id)
     end
 
+    # get all pets 
+    field :pets, [Types::PetType], null: false
+    def pets 
+      Pet.all
+    end
+
+    # get single pet
+    field :pet, Types::PetType, null: false do
+      argument :id, ID, required: true
+    end 
+    def pet(id:)
+      Pet.find(id)
+    end
+
   end
 end
