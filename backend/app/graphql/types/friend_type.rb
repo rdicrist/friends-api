@@ -11,9 +11,6 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
     field :pets, [Types::PetType], "List of pets for this friend"
-    def pets 
-      Pet.where(friend: object).all
-    end
 
   end
 end
