@@ -1,5 +1,5 @@
 class Mutations::UpdateFriend < Mutations::BaseMutation
-    argument :id, Integer, required: false
+    argument :id, ID, required: true
     argument :name, String, required: false
     argument :location, String, required: false
     argument :email, String, required: false
@@ -8,16 +8,10 @@ class Mutations::UpdateFriend < Mutations::BaseMutation
     field :friend, Types::FriendType, null: false
     field :errors, [String]
 
-    def resolve(id:, name:, location:, email:, phone:)
+    def resolve(id:, **args)
         friend = Friend.find(id)
-        friend.update!(
-            name: name,
-            location: location,
-            email: email,
-            phone: phone
-        )
-        if friend.save!
-            {friend: friend, error: []}
+        if friend.update!(args)
+            {friend: friend, errors: []}
         else
             {friend: nil, errors: friend.errors.full_messages} 
         end

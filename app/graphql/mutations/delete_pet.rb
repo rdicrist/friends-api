@@ -1,15 +1,15 @@
-class Mutations::DeleteFriend < Mutations::BaseMutation
+class Mutations::DeletePet < Mutations::BaseMutation
     argument :id, ID, required: true
 
     field :success, String, null: false
     field :errors, [String]
 
     def resolve(id:)
-        friend = Friend.find(id)
-        if friend.destroy!
+        pet = Pet.find(id)
+        if pet.destroy!
             {success: "True", errors: []}
         else
-            {success: "False", errors: friend.errors.full_messages} 
+            {success: "False", errors: pet.errors.full_messages}
         end
     end
 end
